@@ -13,7 +13,7 @@ take seconds, not hours.
 | Path | What it is | State |
 | --- | --- | --- |
 | `xbrew/` | A Homebrew fork with x86 support restored | Working |
-| `library.cpp` | A from-scratch package manager in C++ | Early prototype |
+| `library.cpp`, `main.cpp` | A from-scratch package manager in C++ | Early prototype (search only) |
 
 ## xbrew
 
@@ -55,10 +55,14 @@ Details, limits and how to change the pinned versions are in
 
 ## C++ prototype
 
-`library.cpp` is the start of a standalone package manager written in C++20
-with libcurl. So far it takes a package name and queries an online index for
-matches. It does not install anything yet, and the CMake target does not
-build it as a runnable program.
+`library.cpp` and `main.cpp` are the start of a standalone package manager
+written in C++20 with libcurl. So far it has one command, which searches
+GitHub for C++ repositories matching a name. It does not install anything yet.
+
+```bash
+cmake -S . -B build && cmake --build build
+./build/pkg search wget
+```
 
 ## Requirements
 
